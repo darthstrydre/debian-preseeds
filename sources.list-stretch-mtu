@@ -1,0 +1,8 @@
+deb http://lug.mtu.edu/debian stretch main contrib non-free
+deb-src http://lug.mtu.edu/debian stretch main contrib non-free
+
+deb http://lug.mtu.edu/debian/ stretch-updates main contrib non-free
+deb-src http://lug.mtu.edu/debian/ stretch-updates main contrib non-free
+
+deb http://security.debian.org/ stretch/updates main contrib non-free
+deb-src http://security.debian.org/ stretch/updates main contrib non-free
