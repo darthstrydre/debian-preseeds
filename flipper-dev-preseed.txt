@@ -40,20 +40,23 @@ d-i partman-auto/method string regular
 # If not, you can put an entire recipe into the preconfiguration file in one
 # (logical) line. This example creates a small /boot partition, suitable
 # swap, and uses the rest of the space for the root partition:
-#d-i partman-auto/expert_recipe string                         \
-#      boot-root ::                                            \
-#               538 538 1075 free                              \
-#                      $iflabel{ gpt }                         \
-#                      $reusemethod{ }                         \
-#                      method{ efi }                           \
-#                      format{ }                               \
-#              .                                               \
-#              500 10000 1000000000 btrfs                      \
-#                      method{ format } format{ }              \
-#                      use_filesystem{ } filesystem{ btrfs }   \
-#                      mountpoint{ / }                         \
-#              .                                               \
-#              .
+d-i partman-auto/expert_recipe string                         \
+      boot-root ::                                            \
+               512 512 512 fat32                              \
+                      $iflabel{ gpt }                         \
+                      $reusemethod{ }                         \
+                      method{ efi }                           \
+                      format{ }                               \
+              .                                               \
+              500 10000 1000000000 btrfs                      \
+                      method{ format } format{ }              \
+                      use_filesystem{ } filesystem{ btrfs }   \
+                      mountpoint{ / }                         \
+                      options/noatime{ noatime }              \
+                      options/nodiratime{ nodiratime }        \
+                      options/compress{ compress }            \
+                      options/ssd{ ssd }                      \
+                      options/discard{ discard }
 
 # The full recipe format is documented in the file partman-auto-recipe.txt
 # included in the 'debian-installer' package or available from D-I source
